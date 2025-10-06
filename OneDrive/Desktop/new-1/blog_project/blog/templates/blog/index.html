@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h1>Категории</h1>
+<a href="{% url 'category_create' %}" class="btn btn-primary mb-2">Создать категорию</a>
+<ul class="list-group">
+    {% for category in categories %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'category_detail' category.pk %}">{{ category.name }}</a>
+        <span>
+            <a href="{% url 'category_update' category.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
+            <a href="{% url 'category_delete' category.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+
+<h1 class="mt-4">Посты</h1>
+<a href="{% url 'post_create' %}" class="btn btn-primary mb-2">Создать пост</a>
+<ul class="list-group">
+    {% for post in posts %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+        <span>
+            <a href="{% url 'post_update' post.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
+            <a href="{% url 'post_delete' post.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+ 
